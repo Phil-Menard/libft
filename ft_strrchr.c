@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 13:09:32 by pmenard           #+#    #+#             */
-/*   Updated: 2024/11/05 14:52:02 by pmenard          ###   ########.fr       */
+/*   Created: 2024/11/05 14:38:29 by pmenard           #+#    #+#             */
+/*   Updated: 2024/11/05 15:23:54 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
-{
-	size_t	i;
+#include <stdio.h>
+#include "libft.h"
 
-	i = 0;
-	while (i < (size - 1))
+char	*ft_strrchr(const char *s, int c)
+{
+	int	len;
+
+	len = ft_strlen(s);
+	s += len;
+	while (len >= 0)
 	{
-		dst[i] = src[i];
-		i++;
+		if (*s == (char) c)
+			return ((char *)s);
+		s--;
+		len--;
 	}
-	dst[i] = '\0';
-	while (src[i])
-		i++;
-	return (i);
+	return (NULL);
+}
+
+int	main(void)
+{
+	char	str[] = "Hello World!";
+	int		c;
+
+	c = 'o';
+	printf("%s", ft_strrchr(str, c));
+	return (0);
 }

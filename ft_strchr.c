@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 13:09:32 by pmenard           #+#    #+#             */
-/*   Updated: 2024/11/05 14:52:02 by pmenard          ###   ########.fr       */
+/*   Created: 2024/11/05 14:39:57 by pmenard           #+#    #+#             */
+/*   Updated: 2024/11/05 14:57:42 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < (size - 1))
+	while (*s)
 	{
-		dst[i] = src[i];
-		i++;
+		if (*s == (char) c)
+			return ((char *)s);
+		s++;
 	}
-	dst[i] = '\0';
-	while (src[i])
-		i++;
-	return (i);
+	if (c == '\0')
+		return ((char *)s);
+	return (NULL);
 }
