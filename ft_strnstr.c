@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 10:48:26 by pmenard           #+#    #+#             */
-/*   Updated: 2024/11/06 11:46:40 by pmenard          ###   ########.fr       */
+/*   Created: 2024/11/06 11:48:32 by pmenard           #+#    #+#             */
+/*   Updated: 2024/11/06 13:14:01 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	unsigned char	*ptr;
+	size_t	i;
 
-	ptr = (unsigned char *)s;
-	while (n > 0)
+	if (!*little)
+		return ((char *)big);
+	while (*big && len > 0)
 	{
-		if (*ptr == (unsigned char)c)
-			return ((void *)ptr);
-		ptr++;
-		n--;
+		i = 0;
+		while (big[i] == little[i] && (i < len))
+		{
+			if (little[i + 1] == '\0')
+				return ((char *)big);
+			i++;
+		}
+		big++;
+		len--;
 	}
+	return (NULL);
 }

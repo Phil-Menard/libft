@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 10:48:26 by pmenard           #+#    #+#             */
-/*   Updated: 2024/11/06 11:46:40 by pmenard          ###   ########.fr       */
+/*   Created: 2024/11/06 13:15:58 by pmenard           #+#    #+#             */
+/*   Updated: 2024/11/06 13:32:52 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memchr(const void *s, int c, size_t n)
+int	ft_atoi(const char *nptr)
 {
-	unsigned char	*ptr;
+	int	result;
+	int	sign;
 
-	ptr = (unsigned char *)s;
-	while (n > 0)
+	sign = 1;
+	while ((*nptr >= 9 && *nptr <= 13) || *nptr == ' ')
+		nptr++;
+	if (*nptr == '+')
+		nptr++;
+	if (*nptr == '-')
 	{
-		if (*ptr == (unsigned char)c)
-			return ((void *)ptr);
-		ptr++;
-		n--;
+		sign = -1;
+		nptr++;
 	}
+	result = 0;
+	while (*nptr >= '0' && *nptr <= '9')
+	{
+		result = (result * 10) + (*nptr - '0');
+		nptr++;
+	}
+	result *= sign;
+	return (result);
 }
