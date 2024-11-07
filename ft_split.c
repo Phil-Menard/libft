@@ -13,7 +13,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-char	*isostr(char const *s, char c)
+char	*isolstr(char const *s, char c)
 {
 	char	*str;
 	int		i;
@@ -50,22 +50,61 @@ int	count_words(char *str, char c)
 	return (nb_words);
 }
 
+int	wordlen(char *str, char c)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != c)
+		i++;
+	return (i);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**ptr;
 	char	*str;
-	int		i;
-	int		n;
+	int		cols;
+	int		rows;
 
-	str = isostr(s, c);
-	n = count_words(str, c);
-	ptr = ft_calloc(n, sizeof(char));
-	i = 0;
-	while (n > 0)
+	ptr = ft_calloc(count_words(str, c), sizeof(char));
+	str = isolstr(s, c);
+	rows = 0;
+	//voila une phrase banale//
+	while (rows < count_words(str, c))
 	{
-		while (ft_strchr(s, c) != NULL)
-			ptr[i] = 
-		n--;
+		cols = 0;
+		while (*str != c)
+		{
+			ptr[rows][cols] = *str;
+			cols++;
+			str++;
+		}
+		while (*str == c)
+			str++;
+		rows++;
 	}
-	return (str);
+	return (ptr);
+}
+
+int	main(void)
+{
+	char	str2[] = " voila une phrase banale ";
+	char	*str;
+	char	**ptr;
+	int		n;
+	int		i;
+
+	ptr = ft_split(str2, ' ');
+	str = isolstr(s, c);
+	n = count_words(str, c);
+	i = 0;
+	while (i < n)
+	{
+		printf("%s\n", ptr[i]);
+		i++;
+	}
+	free(ptr);
+	free(str);
+	return (0);
 }
