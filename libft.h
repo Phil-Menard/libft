@@ -6,7 +6,7 @@
 /*   By: pmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:35:59 by pmenard           #+#    #+#             */
-/*   Updated: 2024/11/06 13:46:26 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/11/07 09:51:51 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*ft_strrchr(const char *s, int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+void	*ft_calloc(size_t nmemb, size_t size);
 
 #endif

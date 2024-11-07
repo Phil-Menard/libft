@@ -6,7 +6,7 @@
 /*   By: pmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:40:45 by pmenard           #+#    #+#             */
-/*   Updated: 2024/11/06 13:41:31 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/11/07 11:20:47 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,16 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	*dst = '\0';
 	return (len_dst + len_src);
 }
+
+/*
+#include <stdio.h>
+int	main(void)
+{
+	char	str[6] = "Hello";
+	char	str2[5] = "World";
+
+	printf("%zu\n", ft_strlcat(str, str2, 8));
+	printf("%s\n", str);
+	return (0);
+}
+*/
