@@ -1,47 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 09:19:56 by pmenard           #+#    #+#             */
-/*   Updated: 2024/11/07 17:23:48 by pmenard          ###   ########.fr       */
+/*   Created: 2024/11/07 11:23:12 by pmenard           #+#    #+#             */
+/*   Updated: 2024/11/07 17:55:26 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	void	*result;
+	char	*ptr;
+	int		i;
 
-	result = malloc(nmemb * size);
-	if (result == NULL)
+	if (start >= ft_strlen(s) || len == 0)
+		return (NULL);
+	ptr = malloc((len + 1) * sizeof(char));
+	if (ptr == NULL)
+		return (NULL);
+	i = 0;
+	while (len > 0)
 	{
-		result = malloc(0);
-		return (result);
+		ptr[i] = s[start];
+		i++;
+		start++;
+		len--;
 	}
-	ft_memset(result, 0, size);
-	return (result);
+	ptr[i] = '\0';
+	return (ptr);
 }
-
 /*
 #include <stdio.h>
 int	main(void)
 {
-	int	*str;
-	int		i;
+	char const	s[] = "voila une phrase.";
+	char	*ptr;
 
-	str = ft_calloc(10, sizeof(int));
-	i = 0;
-	while (i < 10)
-	{
-		printf("%d\n", str[i]);
-		i++;
-	}
-	free(str);
-	return 0;
+	ptr = ft_substr(s, 6, 11);
+	printf("%s\n", ptr);
+	return (0);
 }
 */

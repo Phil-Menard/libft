@@ -1,47 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 09:19:56 by pmenard           #+#    #+#             */
-/*   Updated: 2024/11/07 17:23:48 by pmenard          ###   ########.fr       */
+/*   Created: 2024/11/07 11:33:53 by pmenard           #+#    #+#             */
+/*   Updated: 2024/11/07 12:26:37 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	void	*result;
+	char	*ptr;
+	int		i;
+	int		j;
 
-	result = malloc(nmemb * size);
-	if (result == NULL)
+	ptr = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (ptr == NULL)
+		return (NULL);
+	i = 0;
+	while (s1[i])
 	{
-		result = malloc(0);
-		return (result);
+		ptr[i] = s1[i];
+		i++;
 	}
-	ft_memset(result, 0, size);
-	return (result);
+	j = 0;
+	while (s2[j])
+	{
+		ptr[i] = s2[j];
+		i++;
+		j++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
 }
 
 /*
 #include <stdio.h>
 int	main(void)
 {
-	int	*str;
-	int		i;
+	char const str[] = "voila une phrase ";
+	char const str2[] = "de test";
+	char	*ptr;
 
-	str = ft_calloc(10, sizeof(int));
-	i = 0;
-	while (i < 10)
-	{
-		printf("%d\n", str[i]);
-		i++;
-	}
-	free(str);
-	return 0;
+	ptr = ft_strjoin(str, str2);
+	printf("%s\n", ptr);
+	free(ptr);
+	return (0);
 }
 */
