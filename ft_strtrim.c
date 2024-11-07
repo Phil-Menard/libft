@@ -12,9 +12,7 @@
 
 #include "libft.h"
 #include <stdlib.h>
-#include <stdio.h>
-//trouver quand demarre et finit la chaine voulue
-//utiliser substr pour recuperer la string voulue
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*ptr;
@@ -43,6 +41,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (ptr);
 }
 
+/*
+#include <stdio.h>
 int	main(void)
 {
 	char	*ptr;
@@ -57,3 +57,4 @@ int	main(void)
 
 	return (0);
 }
+*/
