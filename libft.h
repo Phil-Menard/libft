@@ -6,7 +6,7 @@
 /*   By: pmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:35:59 by pmenard           #+#    #+#             */
-/*   Updated: 2024/11/07 16:21:36 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/11/08 10:49:37 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ char	*ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
-char	*ft_split(char const *s, char c);
+char	**ft_split(char const *s, char c);
 
 #endif

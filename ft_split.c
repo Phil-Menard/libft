@@ -6,12 +6,13 @@
 /*   By: pmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:36:53 by pmenard           #+#    #+#             */
-/*   Updated: 2024/11/07 17:34:57 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/11/08 12:09:45 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 char	*isolstr(char const *s, char c)
 {
@@ -20,17 +21,14 @@ char	*isolstr(char const *s, char c)
 
 	while (*s == c)
 	{
-		printf("first : %s\n", s);
 		s++;
 	}
 	i = ft_strlen(s);
-	printf("%d\n", i);
 	while (s[i - 1] == c)
 	{
-		printf("second : %s\n", s);
 		i--;
 	}
-	str = ft_substr(s, 0, i);
+	str = ft_substr(s, 0, i + 1);
 	return (str);
 }
 
@@ -55,7 +53,7 @@ int	wordlen(char *str, char c)
 	int	i;
 
 	i = 0;
-	while (str[i] != c)
+	while (str[i] != c && str[i] != '\0')
 		i++;
 	return (i);
 }
@@ -64,47 +62,45 @@ char	**ft_split(char const *s, char c)
 {
 	char	**ptr;
 	char	*str;
-	int		cols;
-	int		rows;
+	int		i;
+	int		j;
+	int		nb_words;
 
-	ptr = ft_calloc(count_words(str, c), sizeof(char));
 	str = isolstr(s, c);
-	rows = 0;
-	//voila une phrase banale//
-	while (rows < count_words(str, c))
+	nb_words = count_words(str, c);
+	ptr = malloc((nb_words + 1) * sizeof(char *));
+	i = 0;
+	while (i < nb_words)
 	{
-		cols = 0;
-		while (*str != c)
-		{
-			ptr[rows][cols] = *str;
-			cols++;
-			str++;
-		}
+		ptr[i] = malloc((wordlen(str, c) + 1) * sizeof(char));
+		j = 0;
+		while (*str != c && *str)
+			ptr[i][j++] = *str++;
+		ptr[i][j] = '\0';
 		while (*str == c)
 			str++;
-		rows++;
+		i++;
 	}
+	ptr[i] = NULL;
 	return (ptr);
 }
 
+/*
 int	main(void)
 {
-	char	str2[] = " voila une phrase banale ";
-	char	*str;
+	const char	str[] = "     voi   la une phrase banale      ";
 	char	**ptr;
-	int		n;
 	int		i;
 
-	ptr = ft_split(str2, ' ');
-	str = isolstr(s, c);
-	n = count_words(str, c);
+	ptr = ft_split(str, ' ');
 	i = 0;
-	while (i < n)
+	while (i < 4)
 	{
 		printf("%s\n", ptr[i]);
+		free(ptr[i]);
 		i++;
 	}
 	free(ptr);
-	free(str);
 	return (0);
 }
+*/

@@ -6,12 +6,13 @@
 /*   By: pmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 11:23:12 by pmenard           #+#    #+#             */
-/*   Updated: 2024/11/07 17:55:26 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/11/08 11:20:04 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
+#include <stdio.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -22,7 +23,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	ptr = malloc((len + 1) * sizeof(char));
 	if (ptr == NULL)
+	{
+		printf("Erreur d'allocation memoire dans substr!");
 		return (NULL);
+	}
 	i = 0;
 	while (len > 0)
 	{
