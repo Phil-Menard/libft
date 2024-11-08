@@ -6,7 +6,7 @@
 /*   By: pmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:36:53 by pmenard           #+#    #+#             */
-/*   Updated: 2024/11/08 12:09:45 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/11/08 12:27:31 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ char	**ft_split(char const *s, char c)
 			str++;
 		i++;
 	}
+	free(str);
 	ptr[i] = NULL;
 	return (ptr);
 }
