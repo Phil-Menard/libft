@@ -25,3 +25,27 @@ void	*ft_memset(void *s, int c, size_t n)
 	}
 	return (s);
 }
+
+/*
+#include <stdio.h>
+#include <string.h>
+
+int	main(void)
+{
+	char	str[] = "Hello";
+	int		arr[5];
+
+	printf("Avant memset : %s\n", str);
+	ft_memset(str, 'c', 3);
+	printf("Apres memset : %s\n", str);
+	printf("\n---------\n");
+	memset(arr, 1, sizeof(arr));
+	int i = 0;
+	while (i < 5)
+	{
+		printf("%d\n", arr[i]);
+		i++;
+	}
+	return (0);
+}
+*/
