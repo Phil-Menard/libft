@@ -6,7 +6,7 @@
 /*   By: pmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:07:50 by pmenard           #+#    #+#             */
-/*   Updated: 2024/11/05 11:59:23 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/11/11 11:33:39 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,3 +38,21 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
+
+/*
+#include <stdio.h>
+#include <string.h>
+
+int	main(void)
+{
+	char	str[] = "toujours";
+	char	dest[] = "blablabla";
+	
+
+	printf("Avant ft_memmove : %s\n", dest);
+	ft_memmove(dest, str, 20);
+	printf("Apres ft_memmove : %s\n", dest);
+	printf("\n---------\n");
+	return (0);
+}
+*/
