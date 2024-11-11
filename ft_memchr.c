@@ -6,7 +6,7 @@
 /*   By: pmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 10:48:26 by pmenard           #+#    #+#             */
-/*   Updated: 2024/11/06 11:46:40 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/11/11 11:50:26 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,3 +26,23 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
+
+/*
+#include <stdio.h>
+#include <string.h>
+
+int	main(void)
+{
+	char	str[] = "voila une longue phrase.";
+	char	*ptr;
+	char	*ptr2;
+	char	c;
+
+	c = 't';
+	ptr = ft_memchr(str, c, 30);
+	printf("ft_memchr : %s\n", ptr);
+	ptr2 = memchr(str, c, 30);
+	printf("memchr    : %s\n", ptr2);
+	return (0);
+}
+*/

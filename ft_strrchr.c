@@ -6,7 +6,7 @@
 /*   By: pmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 14:38:29 by pmenard           #+#    #+#             */
-/*   Updated: 2024/11/05 15:23:54 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/11/11 11:44:14 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,19 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (NULL);
 }
+
+/*
+#include <stdio.h>
+#include <string.h>
+
+int	main(void)
+{
+	char	str[] = "voila une longue phrase.";
+	char	c;
+
+	c = '\0';
+	printf("ft_strrchr : %s\n", ft_strrchr(str, c));
+	printf("strrchr    : %s\n", strrchr(str, c));
+	return (0);
+}
+*/
