@@ -6,7 +6,7 @@
 /*   By: pmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:48:32 by pmenard           #+#    #+#             */
-/*   Updated: 2024/11/06 13:14:01 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/11/11 12:15:31 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,18 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	}
 	return (NULL);
 }
+
+/*
+#include <stdio.h>
+#include <bsd/string.h>
+
+int	main(void)
+{
+	char	big[] = "voila une longue phrase.";
+	char	little[] = "ras";
+	
+	printf("ft_strnstr : %s\n", ft_strnstr(big, little, 20));
+	printf("strnstr    : %s\n", strnstr(big, little, 20));
+	return (0);
+}
+*/
