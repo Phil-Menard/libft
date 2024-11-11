@@ -20,7 +20,7 @@ int	ft_atoi(const char *nptr)
 		nptr++;
 	if (*nptr == '+')
 		nptr++;
-	if (*nptr == '-')
+	else if (*nptr == '-')
 	{
 		sign = -1;
 		nptr++;

@@ -14,26 +14,26 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char	*s;
-	char	*d;
-	char	temp[500];
-	int		i;
+	const char	*s;
+	char		*d;
 
-	i = 0;
-	s = (char *)src;
+	if (dest == NULL && src == NULL)
+		return (NULL);
+	s = (const char *)src;
 	d = (char *)dest;
-	while (*s)
+	if (d > s)
 	{
-		temp[i] = *s;
-		s++;
-		i++;
+		while (n > 0)
+		{
+			n--;
+			d[n] = s[n];
+		}
 	}
-	i = 0;
 	while (n > 0)
 	{
-		*d = temp[i];
+		*d = *s;
 		d++;
-		i++;
+		s++;
 		n--;
 	}
 	return (dest);
@@ -45,13 +45,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 int	main(void)
 {
-	char	str[] = "toujours";
-	char	dest[] = "blablabla";
-	
-
-	printf("Avant ft_memmove : %s\n", dest);
-	ft_memmove(dest, str, 20);
-	printf("Apres ft_memmove : %s\n", dest);
+	ft_memmove(NULL, NULL, 20);
 	printf("\n---------\n");
 	return (0);
 }

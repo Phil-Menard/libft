@@ -21,13 +21,15 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	s_len;
 
 	s_len = ft_strlen(s);
-	if (start >= s_len || len == 0)
-		return (NULL);
+	size_left = s_len - start;
+	if (start >= s_len)
+		len = 0;
+	else if (len > size_left)
+		len = s_len - start;
 	ptr = malloc((len + 1) * sizeof(char));
 	if (ptr == NULL)
 		return (NULL);
 	i = 0;
-	size_left = s_len - start;
 	while (len > 0 && size_left > 0)
 	{
 		ptr[i++] = s[start++];
@@ -42,14 +44,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 #include <stdio.h>
 int	main(void)
 {
-	char const	s[] = "\0voila\t une longue phrase";
+	char const	s[] = "01234";
 	char		*ptr;
 
-	ptr = ft_substr(s, 0, 30);
-	if (ptr)
-		printf("%s\n", ptr);
-	else
-		printf("Empty string!");
+	ptr = ft_substr(s, 10, 10);
+	printf("%s\n", ptr);
 	//printf("%ld\n", ft_strlen(ptr));
 	free(ptr);
 	return (0);

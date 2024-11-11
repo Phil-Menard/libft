@@ -35,19 +35,18 @@ char	*ft_strtrim(char const *s1, char const *set)
 			end = i;
 		i--;
 	}
-	if (start < 0 || end < 0)
-		return (NULL);
 	ptr = ft_substr(s1, start, end - start + 1);
 	return (ptr);
 }
 
 /*
 #include <stdio.h>
+#include <stdio.h>
 int	main(void)
 {
 	char	*ptr;
 
-	ptr = ft_strtrim("bababaolalalaobababa", "ba");
+	ptr = ft_strtrim("", "");
 	printf("%s\n", ptr);
 	free(ptr);
 	return (0);
