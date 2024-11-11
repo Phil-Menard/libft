@@ -6,7 +6,7 @@
 /*   By: pmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:32:32 by pmenard           #+#    #+#             */
-/*   Updated: 2024/11/07 17:55:45 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/11/11 16:31:47 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,9 @@ int	main(void)
 {
 	char	*ptr;
 
-	ptr = ft_strtrim("   ", " ");
-	if (ptr)
-        printf("%s\n", ptr);
-    else
-		printf("(null)\n");
-
+	ptr = ft_strtrim("bababaolalalaobababa", "ba");
+	printf("%s\n", ptr);
 	free(ptr);
-
 	return (0);
 }
 */

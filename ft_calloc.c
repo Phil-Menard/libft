@@ -6,7 +6,7 @@
 /*   By: pmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 09:19:56 by pmenard           #+#    #+#             */
-/*   Updated: 2024/11/11 13:57:59 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/11/11 16:32:43 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*result;
-	
+
 	if (nmemb != 0 && size > 4294967295 / nmemb)
 		return (NULL);
 	result = malloc(nmemb * size);

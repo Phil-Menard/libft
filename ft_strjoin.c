@@ -6,7 +6,7 @@
 /*   By: pmenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 11:33:53 by pmenard           #+#    #+#             */
-/*   Updated: 2024/11/07 12:26:37 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/11/11 15:38:29 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 #include <stdio.h>
 int	main(void)
 {
-	char const str[] = "voila une phrase ";
-	char const str2[] = "de test";
-	char	*ptr;
+	char const 	str[] = "\0";
+	char const 	str2[] = "ok";
+	char		*ptr;
 
 	ptr = ft_strjoin(str, str2);
 	printf("%s\n", ptr);
