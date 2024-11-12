@@ -3,23 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pmenard <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 12:12:41 by pmenard           #+#    #+#             */
-/*   Updated: 2024/11/08 12:53:48 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/11/12 11:47:55 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-size_t	len_int(int n)
+size_t	len_int(long int n, int *sign)
 {
 	size_t	i;
 
 	i = 1;
 	if (n < 0)
+	{
+		*sign = 2;
 		n *= -1;
+	}
 	while (n > 9)
 	{
 		i++;
@@ -28,59 +31,31 @@ size_t	len_int(int n)
 	return (i);
 }
 
-char	*reverse_str(char *str, int n, int sign)
-{
-	char	*result;
-	int		i;
-	int		j;
-
-	j = 0;
-	if (sign > 0)
-	{
-		result = malloc((len_int(n) + 2) * sizeof(char));
-		result[j] = '-';
-		j++;
-	}
-	else
-		result = malloc((len_int(n) + 1) * sizeof(char));
-	i = ft_strlen(str);
-	while (i >= 0)
-	{
-		result[j] = str[i - 1];
-		j++;
-		i--;
-	}
-	result[j] = '\0';
-	return (result);
-}
-
 char	*ft_itoa(int n)
 {
-	char	*ptr;
-	char	*result;
-	int		sign;
-	int		i;
+	char		*ptr;
+	int			sign;
+	int			i;
+	long int	x;
 
-	ptr = malloc((len_int(n) + 1) * sizeof(char));
-	sign = 0;
-	if (n < 0)
+	x = (long int) n;
+	sign = 1;
+	i = len_int(x, &sign) + (sign - 1);
+	if (x < 0)
+		x *= -1;
+	ptr = malloc((len_int(x, &sign) + sign) * sizeof(char));
+	if (ptr == NULL)
+		return (NULL);
+	ptr[i--] = '\0';
+	while (x > 9)
 	{
-		n *= -1;
-		sign++;
+		ptr[i--] = '0' + (x % 10);
+		x /= 10;
 	}
-	i = 0;
-	while (n > 9)
-	{
-		ptr[i] = '0' + (n % 10);
-		n /= 10;
-		i++;
-	}
-	ptr[i] = '0' + n;
-	i++;
-	ptr[i] = '\0';
-	result = reverse_str(ptr, n, sign);
-	free(ptr);
-	return (result);
+	ptr[i] = '0' + x;
+	if (sign > 1)
+		ptr[0] = '-';
+	return (ptr);
 }
 
 /*
@@ -88,7 +63,7 @@ char	*ft_itoa(int n)
 
 int	main(void)
 {
-	printf("%s\n", ft_itoa(-0));
+	printf("%s\n", ft_itoa(-2147483648));
 	return (0);
 }
 */
