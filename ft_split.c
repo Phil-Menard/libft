@@ -6,99 +6,73 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:36:53 by pmenard           #+#    #+#             */
-/*   Updated: 2024/11/12 10:11:26 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/11/12 16:22:46 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 #include <stdlib.h>
 
-char	*isolstr(char const *s, char c)
-{
-	char	*str;
-	int		i;
-
-	while (*s == c)
-	{
-		s++;
-	}
-	i = ft_strlen(s);
-	while (s[i - 1] == c)
-	{
-		i--;
-	}
-	str = ft_substr(s, 0, i + 1);
-	return (str);
-}
-
-int	count_words(char *str, char c)
+int	count_words(char const *s, char c)
 {
 	int	nb_words;
 	int	i;
 
 	i = 0;
-	nb_words = 1;
-	while (str[i])
+	nb_words = 0;
+	while (s[i])
 	{
-		if (str[i] == c && str[i - 1] != c)
+		if (s[i] != c)
 			nb_words++;
+		while (s[i] != c && s[i + 1] != '\0')
+			i++;
 		i++;
 	}
 	return (nb_words);
 }
 
-int	wordlen(char *str, char c)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != c && str[i] != '\0')
-		i++;
-	return (i);
-}
-
 char	**ft_split(char const *s, char c)
 {
 	char	**ptr;
-	char	*str;
 	int		i;
 	int		j;
-	int		nb_words;
+	int		start_word;
 
-	str = isolstr(s, c);
-	nb_words = count_words(str, c);
-	ptr = malloc((nb_words + 1) * sizeof(char *));
 	i = 0;
-	while (i < nb_words)
+	j = 0;
+	start_word = 0;
+	ptr = malloc((count_words(s, c) + 1) * sizeof(char *));
+	if (ptr == NULL)
+		return (NULL);
+	while (s[i])
 	{
-		ptr[i] = malloc((wordlen(str, c) + 1) * sizeof(char));
-		j = 0;
-		while (*str != c && *str)
-			ptr[i][j++] = *str++;
-		ptr[i][j] = '\0';
-		while (*str == c)
-			str++;
+		while (s[i] == c)
+			i++;
+		if (s[i] != c)
+			start_word = i;
+		while (s[i] != c && s[i])
+			i++;
+		ptr[j++] = ft_substr(s, start_word, i - start_word);
 		i++;
 	}
-	free(str);
-	ptr[i] = NULL;
+	ptr[count_words(s, c)] = 0;
 	return (ptr);
 }
 
 /*
+#include <stdio.h>
+
 int	main(void)
 {
-	const char	str[] = "     voi   la une phrase banale      ";
+	const char	str[] = "      split       this for   me  !       ";
 	char	**ptr;
 	int		i;
-
+	printf("%d\n", count_words(str, ' '));
 	ptr = ft_split(str, ' ');
 	i = 0;
-	while (i < 4)
+	while (i < count_words(str, ' ') + 1)
 	{
 		printf("%s\n", ptr[i]);
-		free(ptr[i]);
 		i++;
 	}
 	free(ptr);
