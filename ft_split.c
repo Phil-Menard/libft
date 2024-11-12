@@ -34,45 +34,45 @@ int	count_words(char const *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**ptr;
-	int		i;
+	size_t	i;
 	int		j;
 	int		start_word;
 
-	i = 0;
-	j = 0;
-	start_word = 0;
 	ptr = malloc((count_words(s, c) + 1) * sizeof(char *));
 	if (ptr == NULL)
 		return (NULL);
-	while (s[i])
+	i = 0;
+	j = 0;
+	start_word = 0;
+	while (s[i] && i < ft_strlen(s))
 	{
-		while (s[i] == c)
-			i++;
-		if (s[i] != c)
+		if (s[i] != c && s[i])
+		{
 			start_word = i;
-		while (s[i] != c && s[i])
-			i++;
-		ptr[j++] = ft_substr(s, start_word, i - start_word);
+			while (s[i] && s[i] != c)
+				i++;
+			ptr[j++] = ft_substr(s, start_word, i - start_word);
+		}
 		i++;
 	}
-	ptr[count_words(s, c)] = 0;
+	ptr[j] = 0;
 	return (ptr);
 }
 
-/*
-#include <stdio.h>
-
+/*#include <stdio.h>
 int	main(void)
 {
-	const char	str[] = "      split       this for   me  !       ";
 	char	**ptr;
 	int		i;
-	printf("%d\n", count_words(str, ' '));
-	ptr = ft_split(str, ' ');
+	printf("%d\n", count_words("tripouille", 0));
+	ptr = ft_split("tripouille", 0);
 	i = 0;
-	while (i < count_words(str, ' ') + 1)
+	while (i < count_words("tripouille", 0) + 1)
 	{
-		printf("%s\n", ptr[i]);
+		if (ptr[i] == NULL)
+			printf("(null)\n");
+		else
+			printf("%s\n", ptr[i]);
 		i++;
 	}
 	free(ptr);
