@@ -13,20 +13,18 @@
 #include "libft.h"
 #include <stdlib.h>
 
-/*void	del(void *element)
-{
-	t_list *node;
-
-	node = (t_list *)element;
-	node->content = NULL;
-	printf("Deletion...%p\n", node);
-}*/
-
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	
-} 
+	del(lst->content);
+	free(lst);
+}
 
+/* #include <stdio.h> 
+ void	del(void *content)
+{
+	free(content);
+} 
+ */
 /* 		  [temp]
  		          [curr]
    [*lst] [node1] [adel] [node3] */
@@ -56,13 +54,13 @@ int	main(void)
 	printf("adresse noeud 3 : %p\n", node3);
 	printf("--------------------\n");
 	ft_lstdelone(node1, &del);
-	printf("adresse noeud 1 : %p\n", node1);
-	if (node1->content == NULL)
+	if (node1 == NULL)
 		printf("content deleted\n");
 	else
-		printf("contenu noeud 1 : %d\n", *(int *)node1->content);
+		printf("adresse noeud 1 : %p\n", node1);
+	printf("contenu noeud 1 : %p\n", node1->next);
 	printf("adresse noeud 2 : %p\n", node2);
 	printf("adresse noeud 3 : %p\n", node3);
 	return (0);
-}
- */
+} */
+ 
