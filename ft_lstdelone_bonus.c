@@ -36,16 +36,19 @@ int	main(void)
 	t_list	*node1;
 	t_list	*node2;
 	t_list	*node3;
-	int		a;
-	int		b;
-	int		c;
+	int		*a;
+	int		*b;
+	int		*c;
 
-	a = 20;
-	node1 = ft_lstnew(&a);
-	b = 30;
-	node2 = ft_lstnew(&b);
-	c = 40;
-	node3 = ft_lstnew(&c);
+	a = malloc(sizeof(int));
+	b = malloc(sizeof(int));
+	c = malloc(sizeof(int));
+	*a = 20;
+	*b = 30;
+	*c = 40;
+	node1 = ft_lstnew(a);
+	node2 = ft_lstnew(b);
+	node3 = ft_lstnew(c);
 	node1->next = node2;
 	node2->next = node3;
 	printf("adresse noeud 1 : %p\n", node1);

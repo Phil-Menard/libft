@@ -42,16 +42,24 @@ int	main(void)
 	int		a;
 	int		b;
 	int		c;
-	int		d;
+	int		*d;
 
-	a = 20;
-	node1 = ft_lstnew(&a);
-	b = 30;
-	node2 = ft_lstnew(&b);
-	c = 40;
-	node3 = ft_lstnew(&c);
-	d = 50;
-	last_node = ft_lstnew(&d);
+	int		*a;
+	int		*b;
+	int		*c;
+
+	a = malloc(sizeof(int));
+	b = malloc(sizeof(int));
+	c = malloc(sizeof(int));
+	d = malloc(sizeof(int));
+	*a = 20;
+	*b = 30;
+	*c = 40;
+	*d = 50;
+	node1 = ft_lstnew(a);
+	node2 = ft_lstnew(b);
+	node3 = ft_lstnew(c);
+	last_node = ft_lstnew(d);
 	node1->next = node2;
 	node2->next = node3;
 	ft_lstadd_back(&node1, last_node);
