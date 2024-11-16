@@ -63,4 +63,3 @@ int	main(void)
 	printf("adresse noeud 3 : %p\n", node3);
 	return (0);
 } */
- 
