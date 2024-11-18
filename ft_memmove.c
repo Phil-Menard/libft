@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:07:50 by pmenard           #+#    #+#             */
-/*   Updated: 2024/11/12 10:11:10 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/11/18 13:15:19 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,13 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 /*
 #include <stdio.h>
-#include <string.h>
 
 int	main(void)
 {
-	ft_memmove(NULL, NULL, 20);
-	printf("\n---------\n");
+	char buffer[] = "abcdef";
+    printf("Avant : %s\n", buffer);
+    ft_memmove(buffer + 2, buffer, 4);
+    printf("Après : %s\n", buffer);
 	return (0);
 }
 */
