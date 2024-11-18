@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:40:45 by pmenard           #+#    #+#             */
-/*   Updated: 2024/11/12 10:11:48 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/11/18 10:24:55 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	len_dst = 0;
 	while (len_dst < size && dst[len_dst])
 		len_dst++;
-	len_src = 0;
-	while (src[len_src])
-		len_src++;
+	len_src = ft_strlen(src);
 	if (size == len_dst)
 		return (size + len_src);
 	dst += len_dst;
